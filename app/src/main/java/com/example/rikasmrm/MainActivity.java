@@ -68,12 +68,10 @@ public class MainActivity extends AppCompatActivity {
                 jsonRequest.put("username", username);
                 jsonRequest.put("password", password);
 
-                Log.d("jsonRequest", "jsonRequest" + jsonRequest);
-
                 connection.getOutputStream().write(jsonRequest.toString().getBytes());
 
                 int responseCode = connection.getResponseCode();
-                Log.d("responseCode", "responseCode" + responseCode);
+
                 if (responseCode == HttpURLConnection.HTTP_OK) {
                     InputStream inputStream = connection.getInputStream();
                     BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
@@ -119,7 +117,6 @@ public class MainActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
             } else {
-                Log.d("result", "result" + result);
                 Toast.makeText(MainActivity.this, "Invalid username or password", Toast.LENGTH_SHORT).show();
             }
         }
